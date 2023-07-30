@@ -13,12 +13,14 @@ struct TrackModel {
     var artistName: String
 }
 
-class SearchViewController: UITableViewController {
+class SearchMusicViewController: UITableViewController {
+    
+    var networkService = NetworkService()
+    private var timer: Timer?
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    let songs = [TrackModel(trackName: "Sky", artistName: "Playboi Carti"),
-                 TrackModel(trackName: "Place", artistName: "Playboi Carti")]
+    var tracks = [Track]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +39,13 @@ class SearchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+        return tracks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         
-        let track = songs[indexPath.row]
+        let track = tracks[indexPath.row]
         
         cell.textLabel?.text = "\(track.trackName)\n\(track.artistName)"
         cell.textLabel?.numberOfLines = 2
@@ -53,22 +55,17 @@ class SearchViewController: UITableViewController {
     }
 }
 
-extension SearchViewController: UISearchBarDelegate {
+extension SearchMusicViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         
-        let url = "https://itunes.apple.com/search?term=\(searchText)"
-        
-        AF.request(url).responseData { dataResponse in
-            if let error = dataResponse.error {
-                print("Error received requesting data: \(error.localizedDescription)")
-                return
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            self.networkService.fetchTracks(searchText: searchText) { [weak self] searchResults in
+                self?.tracks = searchResults?.results ?? []
+                self?.tableView.reloadData()
             }
-            
-            guard let data = dataResponse.data else { return }
-            let someString = String(data: data, encoding: .utf8)
-            print(someString ?? "")
-        }
+        })
     }
+    
 }
