@@ -6,14 +6,8 @@
 //
 
 import UIKit
-import Alamofire
 
-struct TrackModel {
-    var trackName: String
-    var artistName: String
-}
-
-class SearchMusicViewController: UITableViewController {
+class SearchViewController: UITableViewController {
     
     var networkService = NetworkService()
     private var timer: Timer?
@@ -29,7 +23,7 @@ class SearchMusicViewController: UITableViewController {
         
         setupSearchBar()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(TrackCell.loadNib(), forCellReuseIdentifier: TrackCell.reusableIdentifier)
     }
     
     private func setupSearchBar() {
@@ -43,19 +37,29 @@ class SearchMusicViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.reusableIdentifier, for: indexPath) as! TrackCell
         
         let track = tracks[indexPath.row]
         
-        cell.textLabel?.text = "\(track.trackName)\n\(track.artistName)"
-        cell.textLabel?.numberOfLines = 2
-        cell.imageView?.image = UIImage(imageLiteralResourceName: "wlr")
+        cell.trackImageView.backgroundColor = .red
+        
+        cell.trackNameLabel.text = track.trackName
+        cell.artistNameLabel.text = track.artistName
+        cell.collectionNameLabel.text = track.collectionName
+        
+//        cell.textLabel?.text = "\(track.trackName)\n\(track.artistName)"
+//        cell.textLabel?.numberOfLines = 2
+//        cell.imageView?.image = UIImage(imageLiteralResourceName: "wlr")
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
+    }
 }
 
-extension SearchMusicViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
