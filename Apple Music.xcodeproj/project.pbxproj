@@ -15,7 +15,7 @@
 		781C348A2A728841005A1F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 781C34882A728841005A1F8E /* LaunchScreen.storyboard */; };
 		781C34922A7288A4005A1F8E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C34912A7288A4005A1F8E /* MainTabBarController.swift */; };
 		781C34942A728A33005A1F8E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C34932A728A33005A1F8E /* SearchViewController.swift */; };
-		781C34962A72971B005A1F8E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C34952A72971B005A1F8E /* Extensions.swift */; };
+		781C34992A72A8A9005A1F8E /* Cell-id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C34982A72A8A9005A1F8E /* Cell-id.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		781C348B2A728841005A1F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		781C34912A7288A4005A1F8E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		781C34932A728A33005A1F8E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		781C34952A72971B005A1F8E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		781C34982A72A8A9005A1F8E /* Cell-id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell-id.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +62,9 @@
 		781C347C2A72883F005A1F8E /* Apple Music */ = {
 			isa = PBXGroup;
 			children = (
+				781C34972A72A898005A1F8E /* Extensions */,
 				781C347D2A72883F005A1F8E /* AppDelegate.swift */,
 				781C347F2A72883F005A1F8E /* SceneDelegate.swift */,
-				781C34952A72971B005A1F8E /* Extensions.swift */,
 				781C34932A728A33005A1F8E /* SearchViewController.swift */,
 				781C34812A72883F005A1F8E /* ViewController.swift */,
 				781C34912A7288A4005A1F8E /* MainTabBarController.swift */,
@@ -74,6 +74,14 @@
 				781C348B2A728841005A1F8E /* Info.plist */,
 			);
 			path = "Apple Music";
+			sourceTree = "<group>";
+		};
+		781C34972A72A898005A1F8E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				781C34982A72A8A9005A1F8E /* Cell-id.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,10 +156,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				781C34942A728A33005A1F8E /* SearchViewController.swift in Sources */,
-				781C34962A72971B005A1F8E /* Extensions.swift in Sources */,
 				781C34822A72883F005A1F8E /* ViewController.swift in Sources */,
 				781C347E2A72883F005A1F8E /* AppDelegate.swift in Sources */,
 				781C34922A7288A4005A1F8E /* MainTabBarController.swift in Sources */,
+				781C34992A72A8A9005A1F8E /* Cell-id.swift in Sources */,
 				781C34802A72883F005A1F8E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
