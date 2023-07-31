@@ -17,4 +17,9 @@ class TrackCell: UITableViewCell, HasCellID, NibLoading {
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    override func prepareForReuse() {
+        
+        trackImageView.image = nil
+    }
 }

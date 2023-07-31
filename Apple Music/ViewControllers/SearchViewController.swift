@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchViewController: UITableViewController {
     
@@ -41,15 +42,10 @@ class SearchViewController: UITableViewController {
         
         let track = tracks[indexPath.row]
         
-        cell.trackImageView.backgroundColor = .red
-        
         cell.trackNameLabel.text = track.trackName
         cell.artistNameLabel.text = track.artistName
         cell.collectionNameLabel.text = track.collectionName
-        
-//        cell.textLabel?.text = "\(track.trackName)\n\(track.artistName)"
-//        cell.textLabel?.numberOfLines = 2
-//        cell.imageView?.image = UIImage(imageLiteralResourceName: "wlr")
+        cell.trackImageView.sd_setImage(with: URL(string: track.posterURL ?? ""), completed: nil)
         
         return cell
     }

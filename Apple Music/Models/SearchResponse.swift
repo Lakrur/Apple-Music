@@ -16,14 +16,14 @@ struct Track: Codable {
     var trackName: String
     var collectionName: String?
     var artistName: String
-    var poster: String?
+    var posterURL: String?
     var previewUrl: String?
     
     private enum CodingKeys: String, CodingKey {
         case trackName
         case collectionName
         case artistName
-        case poster = "artworkUrl100"
+        case posterURL = "artworkUrl100"
         case previewUrl
     }
 }

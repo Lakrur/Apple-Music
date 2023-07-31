@@ -6,6 +6,7 @@ target 'Apple Music' do
   use_frameworks!
 
   # Pods for Apple Music
-pod 'Alamofire'
+pod 'Alamofire' 
+pod 'SDWebImage', '~> 5.0'
 
 end
