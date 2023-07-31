@@ -22,6 +22,7 @@
 		78D1A4F82A7713AA003C0A11 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A4F72A7713AA003C0A11 /* TrackCell.swift */; };
 		78D1A4FB2A7715F3003C0A11 /* Cell-ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A4FA2A7715F3003C0A11 /* Cell-ID.swift */; };
 		78D1A4FD2A7715FF003C0A11 /* NibLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1A4FC2A7715FF003C0A11 /* NibLoading.swift */; };
+		78F4DF322A77E49E0063EC1E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4DF312A77E49E0063EC1E /* FooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		78D1A4F72A7713AA003C0A11 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		78D1A4FA2A7715F3003C0A11 /* Cell-ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell-ID.swift"; sourceTree = "<group>"; };
 		78D1A4FC2A7715FF003C0A11 /* NibLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoading.swift; sourceTree = "<group>"; };
+		78F4DF312A77E49E0063EC1E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		F36EDFA222906C874304ED91 /* Pods_Apple_Music.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apple_Music.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE1493713704004FB120C31 /* Pods-Apple Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Music.debug.xcconfig"; path = "Target Support Files/Pods-Apple Music/Pods-Apple Music.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,16 +100,10 @@
 			children = (
 				78D1A4F92A7715E4003C0A11 /* Extensions */,
 				78D1A4DE2A76E148003C0A11 /* Services */,
-				78D1A4F22A771152003C0A11 /* ViewControllers */,
 				78D1A4F32A771267003C0A11 /* Models */,
-				78D1A4F42A771351003C0A11 /* Cell's */,
-				781C34912A7288A4005A1F8E /* MainTabBarController.swift */,
-				781C347F2A72883F005A1F8E /* SceneDelegate.swift */,
-				781C347D2A72883F005A1F8E /* AppDelegate.swift */,
-				781C34832A72883F005A1F8E /* Main.storyboard */,
-				781C34862A728841005A1F8E /* Assets.xcassets */,
-				781C34882A728841005A1F8E /* LaunchScreen.storyboard */,
-				781C348B2A728841005A1F8E /* Info.plist */,
+				78F4DF302A77E4710063EC1E /* View */,
+				78D1A4F22A771152003C0A11 /* ViewControllers */,
+				78F4DF332A77EC400063EC1E /* Supporting Files */,
 			);
 			path = "Apple Music";
 			sourceTree = "<group>";
@@ -125,6 +121,7 @@
 			children = (
 				781C34932A728A33005A1F8E /* SearchViewController.swift */,
 				781C34812A72883F005A1F8E /* ViewController.swift */,
+				781C34912A7288A4005A1F8E /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -153,6 +150,28 @@
 				78D1A4FC2A7715FF003C0A11 /* NibLoading.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		78F4DF302A77E4710063EC1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78D1A4F42A771351003C0A11 /* Cell's */,
+				78F4DF312A77E49E0063EC1E /* FooterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		78F4DF332A77EC400063EC1E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				781C347F2A72883F005A1F8E /* SceneDelegate.swift */,
+				781C347D2A72883F005A1F8E /* AppDelegate.swift */,
+				781C34832A72883F005A1F8E /* Main.storyboard */,
+				781C34862A728841005A1F8E /* Assets.xcassets */,
+				781C34882A728841005A1F8E /* LaunchScreen.storyboard */,
+				781C348B2A728841005A1F8E /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +296,7 @@
 				781C34822A72883F005A1F8E /* ViewController.swift in Sources */,
 				781C347E2A72883F005A1F8E /* AppDelegate.swift in Sources */,
 				781C34922A7288A4005A1F8E /* MainTabBarController.swift in Sources */,
+				78F4DF322A77E49E0063EC1E /* FooterView.swift in Sources */,
 				78D1A4FD2A7715FF003C0A11 /* NibLoading.swift in Sources */,
 				781C34802A72883F005A1F8E /* SceneDelegate.swift in Sources */,
 				78D1A4F82A7713AA003C0A11 /* TrackCell.swift in Sources */,
@@ -430,7 +450,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQPM435HZ6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Apple Music/Info.plist";
+				INFOPLIST_FILE = "Apple Music/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -459,7 +479,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQPM435HZ6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Apple Music/Info.plist";
+				INFOPLIST_FILE = "Apple Music/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

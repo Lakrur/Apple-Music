@@ -10,12 +10,13 @@ import SDWebImage
 
 class SearchViewController: UITableViewController {
     
-    var networkService = NetworkService()
     private var timer: Timer?
+    private lazy var footerView = FooterView()
+    
+    var networkService = NetworkService()
+    var tracks = [Track]()
     
     let searchController = UISearchController(searchResultsController: nil)
-    
-    var tracks = [Track]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class SearchViewController: UITableViewController {
         setupSearchBar()
         
         tableView.register(TrackCell.loadNib(), forCellReuseIdentifier: TrackCell.reusableIdentifier)
+        tableView.tableFooterView = footerView
     }
     
     private func setupSearchBar() {
@@ -53,6 +55,22 @@ class SearchViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if tracks.count > 0 {
+            return nil
+        } else {
+            let label = UILabel()
+            label.text = "Please enter search term above..."
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+            return label
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return tracks.count > 0 ? 0 : 250
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -61,11 +79,25 @@ extension SearchViewController: UISearchBarDelegate {
         
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            if searchText.isEmpty {
+                self.tracks.removeAll()
+                self.tableView.reloadData()
+                self.footerView.isHidden = true
+                self.footerView.hideLoader()
+            } else {
+                self.footerView.isHidden = false
+                self.footerView.showLoader()
+            }
+            
             self.networkService.fetchTracks(searchText: searchText) { [weak self] searchResults in
                 self?.tracks = searchResults?.results ?? []
                 self?.tableView.reloadData()
+                
+                if searchText.isEmpty {
+                    self?.footerView.hideLoader()
+                }
             }
         })
     }
-    
 }
+
