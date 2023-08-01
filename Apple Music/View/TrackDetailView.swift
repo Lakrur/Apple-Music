@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+import AVKit
 
 class TrackDetailView: UIView {
     
@@ -17,13 +19,37 @@ class TrackDetailView: UIView {
     @IBOutlet weak var authorTitleLabel: UILabel!
     @IBOutlet weak var playPauseButton: UIStackView!
     @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var playPauseButtonOutlet: UIButton!
+    
+    let player: AVPlayer = {
+        let avPlayer = AVPlayer()
+        avPlayer.automaticallyWaitsToMinimizeStalling = false
+        return avPlayer
+    }()
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        trackImageView.backgroundColor = .red
+    }
+    
+    func set(trackModel: Track) {
+        trackTitle.text = trackModel.trackName
+        authorTitleLabel.text = trackModel.artistName
         
+        let string600 = trackModel.posterURL?.replacingOccurrences(of: "100x100", with: "600x600")
+        guard let url = URL(string: string600 ?? "") else { return }
+        
+        trackImageView.sd_setImage(with: url)
+        playTrack(previewUrl: trackModel.previewUrl)
+    }
+    
+    private func playTrack(previewUrl: String?) {
+        
+        guard let url = URL(string: previewUrl ?? "") else { return }
+        let playerItem = AVPlayerItem(url: url)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
     }
     
     
@@ -47,5 +73,13 @@ class TrackDetailView: UIView {
     }
     
     @IBAction func playPauseAction(_ sender: Any) {
+        if player.timeControlStatus == .paused {
+            player.play()
+            playPauseButtonOutlet.setImage(UIImage(named: "pause"), for: .normal)
+        } else if player.timeControlStatus == .playing {
+            player.pause()
+            playPauseButtonOutlet.setImage(UIImage(named: "play"), for: .normal)
+        }
     }
 }
+

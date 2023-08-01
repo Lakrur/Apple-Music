@@ -14,8 +14,9 @@ class TrackCell: UITableViewCell, HasCellID, NibLoading {
     @IBOutlet var artistNameLabel: UILabel!
     @IBOutlet var collectionNameLabel: UILabel!
     
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
+    
     }
     
     override func prepareForReuse() {

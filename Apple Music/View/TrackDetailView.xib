@@ -154,6 +154,7 @@
                 <outlet property="currentTimeSlider" destination="wnK-lZ-WtS" id="lLG-Ta-mVP"/>
                 <outlet property="durationLabel" destination="Zap-f8-Z5y" id="Wkp-MM-pZd"/>
                 <outlet property="playPauseButton" destination="uBZ-MV-mAN" id="Swr-oV-2LN"/>
+                <outlet property="playPauseButtonOutlet" destination="jeo-b6-ouu" id="pHl-yA-Xw6"/>
                 <outlet property="trackImageView" destination="4eS-m0-J2G" id="pbd-85-9Fc"/>
                 <outlet property="trackTitle" destination="aun-Tn-u8F" id="S2M-pg-08V"/>
                 <outlet property="volumeSlider" destination="fcx-tU-xaZ" id="dSY-Nq-RtU"/>
