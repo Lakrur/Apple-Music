@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 import AVKit
 
-protocol TrackMovingDelegate: class {
+protocol TrackMovingDelegate: AnyObject {
     func moveBackForPreviousTrack() -> Track?
     func moveForwardForPreviousTrack() -> Track?
 }
@@ -33,6 +33,7 @@ class TrackDetailView: UIView {
     }()
     
     weak var delegate: TrackMovingDelegate?
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     // MARK: awakeFromNib
     
@@ -133,7 +134,7 @@ class TrackDetailView: UIView {
     
     @IBAction func dragDownButtonTapped(_ sender: Any) {
         
-        self.removeFromSuperview()
+        tabBarDelegate?.minimizedTrackDetailController()
     }
     
     @IBAction func previousTrack(_ sender: Any) {

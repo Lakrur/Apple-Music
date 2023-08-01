@@ -24,6 +24,7 @@ class SearchViewController: UITableViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+
         
         setupSearchBar()
         
