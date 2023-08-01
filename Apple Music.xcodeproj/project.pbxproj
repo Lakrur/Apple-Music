@@ -25,6 +25,7 @@
 		78F4DF322A77E49E0063EC1E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4DF312A77E49E0063EC1E /* FooterView.swift */; };
 		78F4DF352A7927DD0063EC1E /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F4DF342A7927DD0063EC1E /* TrackDetailView.xib */; };
 		78F4DF392A79281F0063EC1E /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4DF382A79281F0063EC1E /* TrackDetailView.swift */; };
+		78F4DF3B2A7969CE0063EC1E /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4DF3A2A7969CE0063EC1E /* CMTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		78F4DF312A77E49E0063EC1E /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		78F4DF342A7927DD0063EC1E /* TrackDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		78F4DF382A79281F0063EC1E /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
+		78F4DF3A2A7969CE0063EC1E /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
 		F36EDFA222906C874304ED91 /* Pods_Apple_Music.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apple_Music.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE1493713704004FB120C31 /* Pods-Apple Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Music.debug.xcconfig"; path = "Target Support Files/Pods-Apple Music/Pods-Apple Music.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +154,7 @@
 			children = (
 				78D1A4FA2A7715F3003C0A11 /* Cell-ID.swift */,
 				78D1A4FC2A7715FF003C0A11 /* NibLoading.swift */,
+				78F4DF3A2A7969CE0063EC1E /* CMTime.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				78F4DF392A79281F0063EC1E /* TrackDetailView.swift in Sources */,
 				781C34822A72883F005A1F8E /* ViewController.swift in Sources */,
 				781C347E2A72883F005A1F8E /* AppDelegate.swift in Sources */,
+				78F4DF3B2A7969CE0063EC1E /* CMTime.swift in Sources */,
 				781C34922A7288A4005A1F8E /* MainTabBarController.swift in Sources */,
 				78F4DF322A77E49E0063EC1E /* FooterView.swift in Sources */,
 				78D1A4FD2A7715FF003C0A11 /* NibLoading.swift in Sources */,

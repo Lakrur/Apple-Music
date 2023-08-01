@@ -49,6 +49,7 @@ class TrackDetailView: UIView {
         guard let url = URL(string: string600 ?? "") else { return }
         
         monitorStartTime()
+        observePlayerCurrentTime()
         trackImageView.sd_setImage(with: url)
         playTrack(previewUrl: trackModel.previewUrl)
         
@@ -73,6 +74,25 @@ class TrackDetailView: UIView {
         }
     }
     
+    private func observePlayerCurrentTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
+            self?.currentTimeLabel.text = time.toDisplayString()
+            
+            let durationTime = self?.player.currentItem?.duration
+            let currentDurationText = ((durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString()
+            self?.durationLabel.text = "-\(currentDurationText)"
+            self?.updateCurrentTimeSlider()
+        }
+    }
+    
+    private func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let percantage = currentTimeSeconds / durationSeconds
+        self.currentTimeSlider.value = Float(percantage)
+    }
+    
     // MARK: Animations
     
     private func enlargeTrackImageView() {
@@ -91,10 +111,17 @@ class TrackDetailView: UIView {
     // MARK: @IBActions
     
     @IBAction func handleCurrentTimeSlider(_ sender: Any) {
+        let percentage = currentTimeSlider.value
+        guard let duration = player.currentItem?.duration else { return }
+        let durationInSeconds = CMTimeGetSeconds(duration)
+        let seekTimeInSeconds = Float64(percentage) * durationInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+        player.seek(to: seekTime)
     }
     
     
     @IBAction func handleVolumeSlider(_ sender: Any) {
+        player.volume = volumeSlider.value
     }
     
     @IBAction func dragDownButtonTapped(_ sender: Any) {
