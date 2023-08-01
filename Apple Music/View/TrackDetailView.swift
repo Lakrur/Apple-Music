@@ -27,11 +27,19 @@ class TrackDetailView: UIView {
         return avPlayer
     }()
     
+    // MARK: awakeFromNib
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let scale: CGFloat = 0.8
+        self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        
+        trackTitle.layer.cornerRadius = 5
+        
     }
+    
+    // MARK: Setup
     
     func set(trackModel: Track) {
         trackTitle.text = trackModel.trackName
@@ -40,8 +48,10 @@ class TrackDetailView: UIView {
         let string600 = trackModel.posterURL?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         
+        monitorStartTime()
         trackImageView.sd_setImage(with: url)
         playTrack(previewUrl: trackModel.previewUrl)
+        
     }
     
     private func playTrack(previewUrl: String?) {
@@ -52,6 +62,33 @@ class TrackDetailView: UIView {
         player.play()
     }
     
+    // MARK: Time Setup
+    
+    private func monitorStartTime() {
+        
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            self?.enlargeTrackImageView()
+        }
+    }
+    
+    // MARK: Animations
+    
+    private func enlargeTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.trackImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    private func reduceTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            let scale: CGFloat = 0.8
+            self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }, completion: nil)
+    }
+    
+    // MARK: @IBActions
     
     @IBAction func handleCurrentTimeSlider(_ sender: Any) {
     }
@@ -76,9 +113,11 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButtonOutlet.setImage(UIImage(named: "pause"), for: .normal)
+            enlargeTrackImageView()
         } else if player.timeControlStatus == .playing {
             player.pause()
             playPauseButtonOutlet.setImage(UIImage(named: "play"), for: .normal)
+            reduceTrackImageView()
         }
     }
 }

@@ -27,6 +27,8 @@ class SearchViewController: UITableViewController {
         
         tableView.register(TrackCell.loadNib(), forCellReuseIdentifier: TrackCell.reusableIdentifier)
         tableView.tableFooterView = footerView
+        
+        searchBar(searchController.searchBar, textDidChange: "Playboi Carti")
     }
     
     private func setupSearchBar() {
